@@ -1,0 +1,33 @@
+.post-display{
+  display:flex;
+  flex-direction:row;
+}
+
+.delete-button {
+  background-color: #49494900;
+  border:none;
+  cursor: pointer;
+  position: relative;
+  left: 28rem;
+  bottom: 4.5rem;
+}
+
+.close {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: rgba(240, 248, 255, 0);
+}
+
+.post-text {
+  display: flex;
+  flex-direction: column;
+  color: rgb(197, 197, 197);
+  flex: 1;
+  font-size: rem;
+}
+
+.post-text label{
+  color: gray;
+  font-size: .8rem;
+  padding-top: 1rem;
+}
