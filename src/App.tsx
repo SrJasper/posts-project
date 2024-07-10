@@ -6,7 +6,7 @@ const App: React.FC = () => {
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [posts, setPosts] = useState<{ message: string; name: string }[]>([]);
+  const [posts, setPosts] = useState<{ message: string; name: string, img: string}[]>([]);
   const [imgSrc, setImgSrc] = useState<string>("/img.png"); // Defina o tipo de imgSrc como string
   let postValid = false;
 
@@ -51,9 +51,8 @@ const App: React.FC = () => {
 
   const post = () => {
     if (postValid) {
-      setPosts([...posts, { message, name }]);
-      setName("");
-      setMessage("");
+      setPosts([...posts, { message, name, img: imgSrc}]);
+      deleteText();
     } else {
       alert("Digite uma mensagem para publicar");
     }
@@ -116,10 +115,10 @@ const App: React.FC = () => {
         <div className="post-pannel">
           <div className="img-box">
             <img
-              className="img"
               src={imgSrc} // Renderiza a imagem com o src atualizado
               alt="img"
               onClick={handleImageClick}
+              className={imgSrc === '/img.png' ? "img" : "img-user"}
             />
           </div>
           <input
@@ -142,24 +141,26 @@ const App: React.FC = () => {
               Descartar
             </button>
             <button className="public-button" onClick={post}>
-              {" "}
-              Publicar{" "}
+              Publicar
             </button>
           </div>
         </div>
       </div>
 
-      <div className="central-container">
-        <h3 className="feed">Feed</h3>
-        {posts.map((post, index) => (
-          <Post
-            key={index}
-            message={post.message}
-            name={post.name}
-            handleDelete={() => closePost(index)}
-          />
-        ))}
-      </div>
+      {posts.length > 0 && (
+        <div className="central-container">
+          <h3 className="feed">Feed</h3>
+          {posts.map((post, index) => (
+            <Post
+              key={index}
+              message={post.message}
+              name={post.name}
+              image={post.img}
+              handleDelete={() => closePost(index)}
+            />
+          ))}
+        </div>
+      )}
     </>
   );
 };

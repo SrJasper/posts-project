@@ -53,6 +53,12 @@ body{
   cursor: pointer;
 }
 
+.img-user{
+  border-radius: 1rem;
+  width: 7.5rem;
+  height: 7.5rem;
+}
+
 .img{
   width: 2rem;
   height: 2rem;

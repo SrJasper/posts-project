@@ -15,7 +15,10 @@ const Post: React.FC<Props> = ({ message, name, image, handleDelete }) => {
         <img className="close" src="/close-button.png" alt="close" />
       </button>
       <div className="img-box">
-        <img className="img" src="/img.png" alt="Logo" />
+        <img 
+          className="img-user" 
+          src={image ? image.toString() : "/img.png"} 
+          alt="Logo" />
       </div>
       <div className="post-text">
         <p>{message}</p>
