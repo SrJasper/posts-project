@@ -37,11 +37,12 @@ const App: React.FC = () => {
     } else {
       publicButton?.setAttribute(
         "style",
-        "background-color: #e0e0e0; : color: #494949;"
+        "background-color: #e0e0e0; color: #494949;"
       );
       postValid = false;
     }
   };
+  
 
   const closePost = (index: number) => {
     const updatedPosts = [...posts];
