@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
-import Post from "./components/post.tsx";
+import Post from "./components/post";
 
 const App: React.FC = () => {
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [posts, setPosts] = useState<{ message: string; name: string, img: string}[]>([]);
+  const [posts, setPosts] = useState<
+    { message: string; name: string; img: string }[]
+  >([]);
   const [imgSrc, setImgSrc] = useState<string>("/img.png"); // Defina o tipo de imgSrc como string
   let postValid = false;
 
@@ -42,7 +44,6 @@ const App: React.FC = () => {
       postValid = false;
     }
   };
-  
 
   const closePost = (index: number) => {
     const updatedPosts = [...posts];
@@ -52,7 +53,7 @@ const App: React.FC = () => {
 
   const post = () => {
     if (postValid) {
-      setPosts([...posts, { message, name, img: imgSrc}]);
+      setPosts([...posts, { message, name, img: imgSrc }]);
       deleteText();
     } else {
       alert("Digite uma mensagem para publicar");
@@ -119,7 +120,7 @@ const App: React.FC = () => {
               src={imgSrc} // Renderiza a imagem com o src atualizado
               alt="img"
               onClick={handleImageClick}
-              className={imgSrc === '/img.png' ? "img" : "img-user"}
+              className={imgSrc === "/img.png" ? "img" : "img-user"}
             />
           </div>
           <input
